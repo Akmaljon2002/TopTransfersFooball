@@ -29,12 +29,15 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('clubs/', ClubsAPIView.as_view()),
+    path('clubs/<str:country>/', ClubCountryView.as_view()),
+    path('players/<int:pk>/', ClubPlayersAPIView.as_view()),
     path('players/', PlayersAPIView.as_view()),
     path('latest_tr/', Latest_trAPIView.as_view()),
     path('transfers/', TransferAPIView.as_view()),
-    path('hozirgi-mavsum/', Hozirgi_mavsumAPIView.as_view()),
+    path('transfer/<str:m>/', Transfer_mAPIView.as_view()),
     path('tr-records/', Tr_recordsAPIView.as_view()),
     path('u20-players/', U20playersAPIView.as_view()),
+    path('predictions/', AccuratePrAPIView.as_view()),
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0)),
     path('docs2/', schema_view.with_ui('redoc', cache_timeout=0)),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
